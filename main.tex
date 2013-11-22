@@ -1,0 +1,205 @@
+\documentclass[%
+	titlepage,oneside,12pt,headlines=1.5,numbers=noenddot, chapterprefix=false,parskip=full-,DIV=14,pagesize]{scrreprt}
+
+\usepackage[utf8]{inputenc} % Schriftsatz utf8 verwenden
+\usepackage[T1]{fontenc} % T1-Fonts
+\usepackage[latin,english,ngerman]{babel} % Deutsche Sonderzeichen und Silbentrennung 
+\usepackage{mathpazo}
+\usepackage[scaled=.95]{helvet}
+\usepackage{courier}
+\usepackage{marvosym} % diverse Symbole
+\usepackage{wasysym} % diverse Symbole 
+\usepackage{eulervm} % Mathematische Symbole 
+\usepackage{amssymb} % Mathematische Symbole 
+\usepackage{pifont} % einige Befehle brauchen pifont (Symbole)
+\usepackage[babel,german=quotes]{csquotes}
+
+\usepackage{tabularx} % bessere Tabellen
+\usepackage[para]{threeparttable} %Fussnoten innerhalb von Tabellen
+\usepackage{array} % wird von colortbl benötigt
+\usepackage{colortbl} % erlaubt Farbige Zellen
+\usepackage{soul}
+\usepackage[table]{xcolor} % alternierende farbige Tabellenzeilen
+\usepackage{booktabs} % Gestaltung der horizontalen Linien innerhalb einer Tabelle
+\usepackage{multirow}
+\usepackage{longtable}
+
+\usepackage{xspace} 
+\usepackage{geometry} 
+\usepackage{setspace}
+\usepackage{calc} 
+\usepackage{microtype} 
+\usepackage{setspace}
+\usepackage{marginnote} % für Randnotizen
+
+% andere Pakete
+\usepackage{graphicx} % Grafikpaket
+\usepackage{tikz} % für hervor gehobene Boxen
+\usetikzlibrary{calc,arrows,shadings,shadows}
+\newcommand\Loadedframemethod{tikz}
+\usepackage[framemethod=\Loadedframemethod]{mdframed}
+
+\geometry{a4paper,left=20mm,right=20mm,top=10mm,bottom=10mm,includeheadfoot,footskip=3mm}
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
+%\usepackage[headsepline,footsepline]{scrpage2}
+%\usepackage{totpages}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\usepackage{enumitem} %Anpassbare Enumerates/Itemizes
+\setlist{noitemsep}
+
+%\clearscrheadfoot
+%\pagestyle{plain}
+\makeatletter
+	\fancypagestyle{plain} {
+		\renewcommand\headrulewidth{0.5pt}
+		\renewcommand\footrulewidth{0.5pt}
+		\lhead{Kassenprüfbericht\\ RV Dahme-Oder-Spree}
+		\chead{}
+		\rhead{\includegraphics[width=27mm]{logo}}
+		\lfoot{}
+		\cfoot{}
+		\rfoot{\thepage\ / \pageref{LastPage}}
+		}
+\makeatother
+
+% Hyperlinks und interne PDF-Verweise
+\usepackage[
+       % Farben fuer die Links
+       colorlinks=true,         % Links erhalten Farben statt Kaeten
+       urlcolor=black,    % \href{...}{...} external (URL)
+       filecolor=black,  % \href{...} local file
+       linkcolor=black,  % \ref{...} and \pageref{...}
+       citecolor=black,
+       menucolor=black,
+       % Links
+       raiselinks=true,			% calculate real height of the link
+       backref=false,           % Backlinks im Literaturverzeichnis (section, slide, page, none)
+       pagebackref=false,       % Backlinks im Literaturverzeichnis mit Seitenangabe
+       verbose,
+       hyperindex=true,         % backlinkex index
+       linktocpage=true,        % Inhaltsverzeichnis verlinkt Seiten
+       hyperfootnotes=true,     % Keine Links auf Fussnoten
+       % Bookmarks
+       bookmarks=false,         % Erzeugung von Bookmarks
+       % Anchors
+       plainpages=false,        % Anchors even on plain pages ?
+       pageanchor=true,         % Pages are linkable
+       pdfstartview=FitH,       % Dokument wird Fit Width geaefnet
+       pdfpagemode=UseOutlines, % Bookmarks im Viewer anzeigen
+       pdfpagelabels=true,      % set PDF page labels
+]{hyperref}
+
+% PDF Informationen
+%\makeatletter
+%\AtBeginDocument{
+%  \hypersetup{
+%    pdftitle={},
+%    pdfauthor={},
+%    pdfsubject={,
+%    pdfkeywords={}
+%  }
+%}
+%\makeatother
+
+% Endnotes
+\usepackage{endnotes}
+\let\footnote=\endnote
+\def\enotesize{\normalsize}
+\renewcommand{\notesname}{Notes} 
+\makeatletter
+	\def\@makeentext#1{\theenmark) #1}
+\makeatother
+
+\newcommand{\notes}{
+  \begingroup
+  \parindent 0pt
+  \leftmargin 2.5cm
+  \parskip -1ex
+  \def\enotesize{\normalsize}
+  \theendnotes
+  \endgroup
+}
+\usepackage{hyperendnotes} 
+
+% für lange Zitate
+\newenvironment{bquote}% 
+   {\begin{quotation}\small}% 
+   {\end{quotation}}% 
+\SetBlockEnvironment{bquote}
+
+% für kurze Zitate
+\newenvironment{squote}% 
+   {\begin{quote}\small}% 
+   {\end{quote}}% 
+\SetBlockEnvironment{squote}
+
+% Hinweis und Warnung
+\newcommand*{\Hinweis}[1]{\textbf{Hinweis:} #1}
+\newcommand*{\Warnung}[1]{\textbf{Warnung:} #1}
+\newcommand*{\Achtung}[1]{\textbf{Achtung:} #1}
+
+\makeatletter
+	\newcommand*\@lizenz{
+		\includegraphics[scale=2.5]{./pd.eps}
+	}
+\makeatother
+
+\makeatletter
+\renewcommand\maketitle{
+	\begingroup
+		%Titelseite setzen
+		\begin{titlepage}
+			\begin{center}
+					\includegraphics[width=6cm]{logo}\\[4cm]
+				{\bfseries
+					\makeatletter
+						\Huge Kassenprüfbericht
+					\makeatother
+				}\\[5mm]
+				\makeatletter
+					{\Large des}\\[5mm]
+					{\Large RV Dahme-Oder-Spree}\\[50mm]
+					\textit{\Large Wahlperiode XXXXX}
+				\makeatother
+					
+			\end{center}
+    		\vspace*{\fill} 
+    		\begin{minipage}[b]{8cm}
+    		\begin{flushleft}
+    			\makeatletter
+    				\@lizenz
+    			\makeatother
+    		\end{flushleft}
+    	\end{minipage}
+    		\hfill
+    		\begin{minipage}[b]{8cm} 
+    			\begin{flushright}
+    				\textbf{Autoren:}\\[2mm]
+    				XXX XXX\\
+    				XXXy
+    			\end{flushright}
+    		\end{minipage}
+    	\end{titlepage}
+	\endgroup
+	\pagebreak
+	%\pagestyle{default}
+\onehalfspacing 
+}
+\makeatother
+\begin{document} 
+\maketitle
+
+\tableofcontents
+\pagebreak
+
+\chapter{Prüfungsrahmen}
+\section{geprüfter Zeitraum}
+hallo welt
+\section{beteiligte Personen}
+
+\end{document}
