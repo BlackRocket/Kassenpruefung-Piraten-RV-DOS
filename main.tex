@@ -1,5 +1,5 @@
 \documentclass[%
-	titlepage,oneside,12pt,headlines=1.5,numbers=noenddot, chapterprefix=false,parskip=full-,DIV=14,pagesize,headings=small]{scrreprt}
+	titlepage,oneside,12pt,headlines=1.5,numbers=noenddot, chapterprefix=false,parskip=full-,DIV=14,pagesize]{scrreprt}
 \input{preambelcommands.tex} % Quelle http://brcs.eu/d0fio
 \usepackage[utf8]{inputenc} % Schriftsatz utf8 verwenden
 \usepackage[T1]{fontenc} % T1-Fonts
@@ -11,6 +11,7 @@
 \usepackage{marvosym} % diverse Symbole
 \usepackage{wasysym} % diverse Symbole 
 \usepackage{eulervm} % Mathematische Symbole 
+\usepackage{eurosym}
 \usepackage{amssymb} % Mathematische Symbole 
 \usepackage{pifont} % einige Befehle brauchen pifont (Symbole)
 \usepackage[babel,german=quotes]{csquotes}
@@ -166,7 +167,7 @@
 				\makeatletter
 					{\Large des}\\[5mm]
 					{\Large RV Dahme-Oder-Spree}\\[50mm]
-					\textit{\Large Legislatur 2012/2013 }
+					\textit{\Large Legislaturperiode 2012/2013 }
 				\makeatother
 					
 			\end{center}
@@ -232,8 +233,12 @@
 \definecolor{pirateorangebright}{rgb}{1.0,0.62,0.0}
 \definecolor{pirateorangebrighter}{rgb}{1.0,0.73,0.0}
 
+\renewcommand{\arraystretch}{1.2}% erhöht den Zeilenabstand für Ueberschrift
+\setlength{\arrayrulewidth}{1.5pt}%
+\rowcolors{1}{hellgrau}{white}% alternierende Farben
+\arrayrulecolor{pirateorange}%
 
-\newcommand*{\ditto}{\begin{center}\vspace{-24pt}---\quad \grqq\quad ---\vspace{-12pt}\end{center}}
+\newcommand*{\ditto}{\begin{center}\vspace{-0.40in}---\quad \textquotedbl\quad ---\vspace{-0.24in}\end{center}}
 \begin{document} 
 \maketitle
 
@@ -289,10 +294,7 @@ Während der Kassenprüfung waren noch nachfolgende Personen anwesend
 
 \chapter{Prüfungsunterlagen}
 Folgende Unterlagen liegen vollständig vor:
-\renewcommand{\arraystretch}{1.2}% erhöht den Zeilenabstand für Ueberschrift
-\setlength{\arrayrulewidth}{1.5pt}%
-\rowcolors{1}{hellgrau}{white}% alternierende Farben
-\arrayrulecolor{pirateorange}%
+
 \begin{longtable}[ht]{|p{0.25\textwidth} p{0.10\textwidth} p{0.568\textwidth}|}
 \hline\rowcolor{pirateorange} 
 	\textcolor{white}{\textbf{Prüfung}} & \textcolor{white}{\textbf{Ja/Nein}} & \textcolor{white}{\textbf{Kommentar}}\\\endhead
@@ -305,7 +307,7 @@ Folgende Unterlagen liegen vollständig vor:
         \footnotesize Buchungsbelege\newline Nr. xxxx bis xxxx & \footnotesize \textit{ja} & \footnotesize Die Buchungsbelege waren nicht sortiert. \\
         \footnotesize Bankkontenauszüge & \footnotesize \textit{ja} & \footnotesize Deutsche Skatbank, Kontonummer: 4756894\newline vom 01.01.2013 bis 31.08.2013 \\
         \footnotesize Barkassenbuch & \footnotesize \textit{nein} & \footnotesize Ein solches Buch wird nicht geführt, es existiert ausschließlich eine Wikiseite (http://brcs.eu/9unkx). \\
-        \footnotesize Prüfungsfeststellungen und empfohlene Maßnahmen aus der vorherigen Kassenprüfung liegen vor und werden zur Nachkontrolle herangezogen. & \footnotesize \textit{nein} & \footnotesize Diese Prüfung ist die erste vollständige, vorhergehende haben ausschließlich die Barkasse umfasst.\\
+        \footnotesize Prüfungsfeststellungen und empfohlene Maßnahmen aus der vorherigen Kassenprüfung liegen vor und werden zur Nachkontrolle herangezogen. & \footnotesize \textit{nein} & \footnotesize In den vorhergehenden Legislaturperioden wurde nur eine Stichprobenartige Barkassenprüfung durchgeführt.\\
         \footnotesize Die Belege sind mit Belegnummern versehen und nach einem nachvollziehbaren Ordnungsprinzip abgelegt. & \footnotesize \textit{nein} & \footnotesize Die Belege sind nicht fortlaufend nummeriert. \\
 \hline
 \end{longtable}
@@ -317,7 +319,45 @@ Für die Prüfung stand \underline{\textbf{kein}} ausschließlich lesender Zugri
 \chapter{Prüfungshandlungen}
 \section{Barkasse}
 % Es wird keine Barkasse geführt.\newline
-Es wird eine Barkasse geführt.
+Es wird eine Barkasse geführt. \textbf{Hans-Peter Delius} war verantwortlich für die Führung der Barkasse im Prüfungszeitraum. Auf Befragen wurde versichert, dass keine weiteren Geld- oder sonstigen Vermögensbestände verwahrt werden.
 
-Hans-Peter Delius war verantwortlich für die Führung der Barkasse im Prüfungszeitraum. Auf Befragen wurde versichert, dass keine weiteren Geld- oder sonstigen Vermögensbestände verwahrt werden.
+\begin{longtable}[ht]{|p{0.40\textwidth} p{0.10\textwidth} p{0.419\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\textcolor{white}{\textbf{Prüfung}} & \textcolor{white}{\textbf{Betrag}} & \textcolor{white}{\textbf{Kommentar}}\\\endhead
+        \footnotesize Soll-Bestand laut Finanzbuchhaltung & \footnotesize -- & \footnotesize Kein Zugriff möglich \\ 
+        \footnotesize Soll-Bestand laut Kassenbuch & \footnotesize \EUR{0,00} & \footnotesize Nicht dokumentenechte Wikiseite \\
+        \footnotesize Ist-Bestand der Barkasse & \footnotesize \EUR{0,00} &   \\
+        \footnotesize \textbf{Differenz zum Soll-Bestand Kassenbuch} & \footnotesize \textbf{\EUR{0,00}} &  \\
+\hline
+\end{longtable}
+\textbf{Prüfergebnis:}\newline
+Der Barkassenbestand am Prüfungsstichtag stimmt mit dem Kassenbuch \textbf{\underline{überein}}.
+%Der Barkassenbestand am Prüfungsstichtag stimmt mit dem Kassenbuch \textbf{\underline{nicht überein}}.
+
+%Der Barkassenbestand am Prüfungsstichtag stimmt mit dem Kontenbestand der Finanzbuchhaltung \textbf{\underline{überein}}.
+%Der Barkassenbestand am Prüfungsstichtag stimmt mit dem Kontenbestand der Finanzbuchhaltung \textbf{\underline{nicht überein}}.
+
+%Der Barkassenbestand laut Kassenbuch stimmt am Prüfungsstichtag mit dem Kontenbestand der Finanzbuchhaltung \textbf{\underline{überein}}.
+%Der Barkassenbestand laut Kassenbuch stimmt am Prüfungsstichtag mit dem Kontenbestand der Finanzbuchhaltung \textbf{\underline{nicht überein}}.
+Ob der Barkassenbestand und der Barkassenbestand laut Kassenbuch mit dem Kontenbestand der Finanzbuchhaltung übereinstimmt konnte nicht geprüft werden. Da kein Zugriff auf die aktuellen Finanzbuchhaltungsdaten möglich war.
+
+%Folgende Beleg wurden bisher nicht im Kassenbuch erfasst / nicht in der Finanzbuchhaltung gebucht.
+
+%\begin{longtable}[ht]{|p{0.15\textwidth} p{0.16\textwidth} p{0.15\textwidth} p{0.434\textwidth}|}
+%\hline\rowcolor{pirateorange} 
+%	\textcolor{white}{\textbf{Belegdatum}} & \textcolor{white}{\textbf{Belegnummer}} & \textcolor{white}{\textbf{Betrag}} & 
+%	\textcolor{white}{\textbf{Anm.: nicht erfasst / nicht gebucht}}\\\endhead
+%        \footnotesize  & \footnotesize  & \footnotesize & \footnotesize \\ 
+%        \footnotesize  & \footnotesize  & \footnotesize & \footnotesize \\
+%\hline
+%\end{longtable}
+
+%Unter Berücksichtigung dieser Belege kann eine Übereinstimmung des Ist-Bestandes mit den Soll-Beständen im Kassenbuch \textbf{\underline{festgestellt}} werden.
+%Unter Berücksichtigung dieser Belege kann eine Übereinstimmung des Ist-Bestandes mit den Soll-Beständen im Kassenbuch \textbf{\underline{nicht festgestellt}} werden. In der Barkasse befindet sich \EUR{X} zu viel. 
+%Unter Berücksichtigung dieser Belege kann eine Übereinstimmung des Ist-Bestandes mit den Soll-Beständen im Kassenbuch \textbf{\underline{nicht festgestellt}} werden. In der Barkasse befindet sich \EUR{X} zu wenig. 
+
+%Folgende Gründe für die nicht Übereinstimmung wurden von der kassenverantwortlichen Person genannt.
+
+\textbf{Anmerkungen:}
+Die Barkasse wurde faktisch aufgelöst. Empfohlen wird trotzdem die Anschaffung und Führung von eines dokumentenechten Kassenbuches. Auch empfohlen wird die Anschaffung von Quittungsbüchern als Quittungsbeleg für Bareinzahlungen bzw. Barauszahlungen bei Rückerstattung verauslagter Kosten. Einzahlungen sind durch den Kassenführer (Unterschrift), der Empfang von Auszahlungen ist durch den Empfänger zu quittieren (Unterschrift).
 \end{document}
