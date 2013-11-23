@@ -1,12 +1,13 @@
 \documentclass[%
-	titlepage,oneside,12pt,headlines=1.5,numbers=noenddot, chapterprefix=false,parskip=full-,DIV=14,pagesize]{scrreprt}
-
+	titlepage,oneside,12pt,headlines=1.5,numbers=noenddot, chapterprefix=false,parskip=full-,DIV=14,pagesize,headings=small]{scrreprt}
+\input{preambelcommands.tex} % Quelle http://brcs.eu/d0fio
 \usepackage[utf8]{inputenc} % Schriftsatz utf8 verwenden
 \usepackage[T1]{fontenc} % T1-Fonts
 \usepackage[latin,english,ngerman]{babel} % Deutsche Sonderzeichen und Silbentrennung 
-\usepackage{mathpazo}
-\usepackage[scaled=.95]{helvet}
 \usepackage{courier}
+\usepackage[sc]{mathpazo}
+\renewcommand\sfdefault{ppl}
+\usepackage[scaled]{helvet} % ss
 \usepackage{marvosym} % diverse Symbole
 \usepackage{wasysym} % diverse Symbole 
 \usepackage{eulervm} % Mathematische Symbole 
@@ -44,28 +45,29 @@
 \widowpenalty = 10000
 \displaywidowpenalty = 10000
 
-%\usepackage[headsepline,footsepline]{scrpage2}
-%\usepackage{totpages}
+
+\usepackage{titlesec} % ermöglicht das anpassen der Titel
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 
 \usepackage{enumitem} %Anpassbare Enumerates/Itemizes
 \setlist{noitemsep}
 
-%\clearscrheadfoot
-%\pagestyle{plain}
+
 \makeatletter
-	\fancypagestyle{plain} {
-		\renewcommand\headrulewidth{0.5pt}
-		\renewcommand\footrulewidth{0.5pt}
-		\lhead{Kassenprüfbericht\\ RV Dahme-Oder-Spree}
-		\chead{}
-		\rhead{\includegraphics[width=27mm]{logo}}
-		\lfoot{}
-		\cfoot{}
-		\rfoot{\thepage\ / \pageref{LastPage}}
-		}
+\fancypagestyle{plain} {
+	\renewcommand\headrulewidth{0.5pt}
+	\renewcommand\footrulewidth{0.5pt}
+	\lhead{Kassenprüfbericht\\ RV Dahme-Oder-Spree}
+	\chead{}
+	\rhead{\includegraphics[width=27mm]{logo}}
+	\lfoot{}
+	\cfoot{}
+	\rfoot{\thepage\ / \pageref{LastPage}}
+	}
 \makeatother
+
+%\input{tabelle.tex}
 
 % Hyperlinks und interne PDF-Verweise
 \usepackage[
@@ -164,7 +166,7 @@
 				\makeatletter
 					{\Large des}\\[5mm]
 					{\Large RV Dahme-Oder-Spree}\\[50mm]
-					\textit{\Large Wahlperiode XXXXX}
+					\textit{\Large Legislatur 2012/2013 }
 				\makeatother
 					
 			\end{center}
@@ -180,26 +182,142 @@
     		\begin{minipage}[b]{8cm} 
     			\begin{flushright}
     				\textbf{Autoren:}\\[2mm]
-    				XXX XXX\\
-    				XXXy
+    				Sebastian Bretag\\
+    				Steffen Kern
     			\end{flushright}
     		\end{minipage}
     	\end{titlepage}
 	\endgroup
 	\pagebreak
-	%\pagestyle{default}
-\onehalfspacing 
+	\onehalfspacing 
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+	\tableofcontents
+	\pagebreak
 }
 \makeatother
+
+\renewcommand*{\chapterpagestyle}{plain}
+\renewcommand*{\indexpagestyle}{plain}
+\setcounter{secnumdepth}{6} % Numeriere 6 Ebenen tief (bis subparagraph)
+
+% Abstand vor und nach Kapitelüberschriften
+% \chapter
+\titleformat{\chapter}[hang]{\fontsize{19}{19}\selectfont\bfseries}{\thechapter}{.5em}{}
+\titlespacing{\chapter}{0pt}{-2em}{-0.5em}
+
+% \section
+\titleformat{\section}[hang]{\fontsize{17}{17}\selectfont\bfseries}{\thesection}{.5em}{}
+\titlespacing{\section}{0pt}{0em}{-.5em}
+
+% \subsection
+\titleformat{\subsection}[hang]{\fontsize{16}{16}\selectfont\bfseries}{\thesubsection}{.5em}{}
+\titlespacing{\subsection}{0pt}{0em}{-1em}
+
+% \subsubsection
+\titleformat{\subsubsection}[hang]{\fontsize{15}{15}\selectfont\bfseries}{\thesubsubsection}{.5em}{}
+\titlespacing{\subsubsection}{0em}{0pt}{-1em}
+
+% \paragraph
+\titleformat{\paragraph}[hang]{\fontsize{14}{14}\selectfont\bfseries}{\theparagraph}{.5em}{}
+\titlespacing{\paragraph}{0pt}{0em}{-1em}
+
+% \subparagraph
+\titleformat{\subparagraph}[hang]{\normalsize\bfseries}{\thesubparagraph}{.5em}{}
+\titlespacing{\subparagraph}{0pt}{0em}{-1em}
+\definecolor{dunkelgrau}{gray}{0.35}
+\definecolor{mittelgrau}{gray}{0.85}
+\definecolor{hellgrau}{gray}{0.93}
+\definecolor{pirateorange}{rgb}{1.0,0.52,0.0}
+\definecolor{pirateorangebright}{rgb}{1.0,0.62,0.0}
+\definecolor{pirateorangebrighter}{rgb}{1.0,0.73,0.0}
+
+
+\newcommand*{\ditto}{\begin{center}\vspace{-24pt}---\quad \grqq\quad ---\vspace{-12pt}\end{center}}
 \begin{document} 
 \maketitle
 
-\tableofcontents
-\pagebreak
-
 \chapter{Prüfungsrahmen}
 \section{geprüfter Zeitraum}
-hallo welt
-\section{beteiligte Personen}
+Es wurden die Unterlagen für die Zeit vom 01.01.2013 bis 07.09.2013 geprüft.
 
+\textit{Die Prüfergebnisse für den Zeitraum 11.08.2012 bis 31.12.2013 wurden auf der Hauptversammlung 2013 des RV DOS am 07.09.2013 vorgestellt. Eine Prüfung der gesamten Legislaturperiode vor Hauptversammlung war nicht möglich, da kommissarischer Kassenwart nicht zur Verfügung stand.}
+\section{beteiligte Personen}
+Die Prüfung wurde am 16.10.2013 durch
+\renewcommand{\arraystretch}{1.2}% erhöht den Zeilenabstand für Ueberschrift
+\setlength{\arrayrulewidth}{1.5pt}%
+\rowcolors{1}{hellgrau}{white}% alternierende Farben
+\arrayrulecolor{pirateorange}%
+\begin{longtable}[ht]{|p{0.25\textwidth} p{0.694\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\textcolor{white}{\textbf{Name}} & \textcolor{white}{\textbf{Funktion}}  \\
+        Sebastian Bretag & Kassenprüfer RV DOS \\ 
+        Steffen Kern  & Kassenprüfer RV DOS  \\
+\hline
+\end{longtable}\vspace{-1.25em}
+durchgeführt.
+
+Für Auskünfte stand zur Verfügung
+\renewcommand{\arraystretch}{1.2}% erhöht den Zeilenabstand für Ueberschrift
+\setlength{\arrayrulewidth}{1.5pt}%
+\rowcolors{1}{hellgrau}{white}% alternierende Farben
+\arrayrulecolor{pirateorange}%
+\begin{longtable}[ht]{|p{0.25\textwidth} p{0.694\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\textcolor{white}{\textbf{Name}} & \textcolor{white}{\textbf{Funktion}}  \\
+        Hans-Peter Delius & Beisitzer \& Kommissarischer Kassenwart  \\ 
+        Frank Behr & 1. Vorsitzender \\\hline
+\end{longtable}\vspace{-1.25em}
+
+
+Während der Kassenprüfung waren noch nachfolgende Personen anwesend
+\renewcommand{\arraystretch}{1.2}% erhöht den Zeilenabstand für Ueberschrift
+\setlength{\arrayrulewidth}{1.5pt}%
+\rowcolors{1}{hellgrau}{white}% alternierende Farben
+\arrayrulecolor{pirateorange}%
+\begin{longtable}[ht]{|p{0.25\textwidth} p{0.69\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\textcolor{white}{\textbf{Name}} & \textcolor{white}{\textbf{Funktion}}  \\
+        Kai Hamacher & 1. Vorsitzender (Legislaturperiode 2013/2014) \\ 
+        Guido Körber & 2. Vorsitzender (Legislaturperiode 2013/2014) \\
+        Angelika Meier & Beisitzer (Legislaturperiode 2013/2014) \\
+        Frank Giebel-Schink & Beisitzer (Legislaturperiode 2013/2014) \\
+        Klaus Peter & Beisitzer (Legislaturperiode 2013/2014) \\
+\hline
+\end{longtable}\vspace{-1.25em}
+
+
+\chapter{Prüfungsunterlagen}
+Folgende Unterlagen liegen vollständig vor:
+\renewcommand{\arraystretch}{1.2}% erhöht den Zeilenabstand für Ueberschrift
+\setlength{\arrayrulewidth}{1.5pt}%
+\rowcolors{1}{hellgrau}{white}% alternierende Farben
+\arrayrulecolor{pirateorange}%
+\begin{longtable}[ht]{|p{0.25\textwidth} p{0.10\textwidth} p{0.568\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\textcolor{white}{\textbf{Prüfung}} & \textcolor{white}{\textbf{Ja/Nein}} & \textcolor{white}{\textbf{Kommentar}}\\\endhead
+        \footnotesize Bilanz/Jahresrechnung & \footnotesize \textit{nein} & \footnotesize  \\ 
+        \footnotesize Summen und Saldenliste & \footnotesize \textit{nein} & \scriptsize Ein Zugriff auf die Buchhaltung bestand nicht. Gebucht wird ausschließlich durch den Schatzmeister oder eine beauftragte Person im Landesverband. Infolge der Umstellung der Buchhaltung rückwirkend ab 2012 auf Sage, der Neuwahl des LSM und organisatorische Probleme konnten auch die Unterlagen nicht vollständig zur Verfügung gestellt werden. Vorgelegt werden konnten der Kontennachweis für den geprüften Zeitraum für den RV. \\
+        \footnotesize Buchhaltungsdaten in Dateiform (z.B. als csv-Datei) & \footnotesize \textit{nein} & \ditto  \\
+        \footnotesize Kontenblätter & \footnotesize \textit{nein} &  \ditto \\
+        \footnotesize Journal & \footnotesize \textit{nein} & \ditto \\
+        \footnotesize Kontenplan & \footnotesize \textit{nein} & \footnotesize  \\
+        \footnotesize Buchungsbelege\newline Nr. xxxx bis xxxx & \footnotesize \textit{ja} & \footnotesize Die Buchungsbelege waren nicht sortiert. \\
+        \footnotesize Bankkontenauszüge & \footnotesize \textit{ja} & \footnotesize Deutsche Skatbank, Kontonummer: 4756894\newline vom 01.01.2013 bis 31.08.2013 \\
+        \footnotesize Barkassenbuch & \footnotesize \textit{nein} & \footnotesize Ein solches Buch wird nicht geführt, es existiert ausschließlich eine Wikiseite (http://brcs.eu/9unkx). \\
+        \footnotesize Prüfungsfeststellungen und empfohlene Maßnahmen aus der vorherigen Kassenprüfung liegen vor und werden zur Nachkontrolle herangezogen. & \footnotesize \textit{nein} & \footnotesize Diese Prüfung ist die erste vollständige, vorhergehende haben ausschließlich die Barkasse umfasst.\\
+        \footnotesize Die Belege sind mit Belegnummern versehen und nach einem nachvollziehbaren Ordnungsprinzip abgelegt. & \footnotesize \textit{nein} & \footnotesize Die Belege sind nicht fortlaufend nummeriert. \\
+\hline
+\end{longtable}
+
+% Für die Prüfung stand ein ausschließlich lesender Zugriff auf die Buchhaltungs- und Mitgliederdaten zur Verfügung.
+Für die Prüfung stand \underline{\textbf{kein}} ausschließlich lesender Zugriff auf die Buchhaltungs- und Mitgliederdaten zur Verfügung.
+
+
+\chapter{Prüfungshandlungen}
+\section{Barkasse}
+% Es wird keine Barkasse geführt.\newline
+Es wird eine Barkasse geführt.
+
+Hans-Peter Delius war verantwortlich für die Führung der Barkasse im Prüfungszeitraum. Auf Befragen wurde versichert, dass keine weiteren Geld- oder sonstigen Vermögensbestände verwahrt werden.
 \end{document}
