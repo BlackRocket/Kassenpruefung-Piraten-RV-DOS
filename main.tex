@@ -41,7 +41,7 @@
 \newcommand\Loadedframemethod{tikz}
 \usepackage[framemethod=\Loadedframemethod]{mdframed}
 
-\geometry{a4paper,left=20mm,right=20mm,top=10mm,bottom=10mm,includeheadfoot,footskip=3mm}
+\geometry{a4paper,left=20mm,right=20mm,top=10mm,bottom=10mm,includeheadfoot,footskip=18pt}
 \clubpenalty = 10000
 \widowpenalty = 10000
 \displaywidowpenalty = 10000
@@ -190,6 +190,7 @@
     	\end{titlepage}
 	\endgroup
 	\pagebreak
+	\pagestyle{plain}
 	\onehalfspacing 
 	\pagenumbering{arabic}
 	\setcounter{page}{1}
@@ -330,12 +331,12 @@ Es wird eine Barkasse geführt. \textbf{Hans-Peter Delius} war verantwortlich f�
         \footnotesize \textbf{Differenz zum Soll-Bestand Kassenbuch} & \footnotesize \textbf{\EUR{0,00}} &  \\
 \hline
 \end{longtable}
-\textbf{Prüfergebnis:}\newline
-Der Barkassenbestand am Prüfungsstichtag stimmt mit dem Kassenbuch \textbf{\underline{überein}}.
-%Der Barkassenbestand am Prüfungsstichtag stimmt mit dem Kassenbuch \textbf{\underline{nicht überein}}.
+\underline{\textbf{Prüfergebnis:}}\newline
+Der Barkassenbestand am Prüfungsstichtag stimmt mit dem Kassenbuch \underline{überein}.
+%Der Barkassenbestand am Prüfungsstichtag stimmt mit dem Kassenbuch \underline{nicht überein}.
 
-%Der Barkassenbestand am Prüfungsstichtag stimmt mit dem Kontenbestand der Finanzbuchhaltung \textbf{\underline{überein}}.
-%Der Barkassenbestand am Prüfungsstichtag stimmt mit dem Kontenbestand der Finanzbuchhaltung \textbf{\underline{nicht überein}}.
+%Der Barkassenbestand am Prüfungsstichtag stimmt mit dem Kontenbestand der Finanzbuchhaltung \underline{überein}.
+%Der Barkassenbestand am Prüfungsstichtag stimmt mit dem Kontenbestand der Finanzbuchhaltung \underline{nicht überein}.
 
 %Der Barkassenbestand laut Kassenbuch stimmt am Prüfungsstichtag mit dem Kontenbestand der Finanzbuchhaltung \textbf{\underline{überein}}.
 %Der Barkassenbestand laut Kassenbuch stimmt am Prüfungsstichtag mit dem Kontenbestand der Finanzbuchhaltung \textbf{\underline{nicht überein}}.
@@ -352,12 +353,70 @@ Ob der Barkassenbestand und der Barkassenbestand laut Kassenbuch mit dem Kontenb
 %\hline
 %\end{longtable}
 
-%Unter Berücksichtigung dieser Belege kann eine Übereinstimmung des Ist-Bestandes mit den Soll-Beständen im Kassenbuch \textbf{\underline{festgestellt}} werden.
-%Unter Berücksichtigung dieser Belege kann eine Übereinstimmung des Ist-Bestandes mit den Soll-Beständen im Kassenbuch \textbf{\underline{nicht festgestellt}} werden. In der Barkasse befindet sich \EUR{X} zu viel. 
-%Unter Berücksichtigung dieser Belege kann eine Übereinstimmung des Ist-Bestandes mit den Soll-Beständen im Kassenbuch \textbf{\underline{nicht festgestellt}} werden. In der Barkasse befindet sich \EUR{X} zu wenig. 
+%Unter Berücksichtigung dieser Belege kann eine Übereinstimmung des Ist-Bestandes mit den Soll-Beständen im Kassenbuch \underline{festgestellt} werden.
+%Unter Berücksichtigung dieser Belege kann eine Übereinstimmung des Ist-Bestandes mit den Soll-Beständen im Kassenbuch \underline{nicht festgestellt} werden. In der Barkasse befindet sich \EUR{X} zu viel. 
+%Unter Berücksichtigung dieser Belege kann eine Übereinstimmung des Ist-Bestandes mit den Soll-Beständen im Kassenbuch \underline{nicht festgestellt} werden. In der Barkasse befindet sich \EUR{X} zu wenig. 
 
 %Folgende Gründe für die nicht Übereinstimmung wurden von der kassenverantwortlichen Person genannt.
 
-\textbf{Anmerkungen:}
+\textbf{\underline{Anmerkungen:}}\newline
 Die Barkasse wurde faktisch aufgelöst. Empfohlen wird trotzdem die Anschaffung und Führung von eines dokumentenechten Kassenbuches. Auch empfohlen wird die Anschaffung von Quittungsbüchern als Quittungsbeleg für Bareinzahlungen bzw. Barauszahlungen bei Rückerstattung verauslagter Kosten. Einzahlungen sind durch den Kassenführer (Unterschrift), der Empfang von Auszahlungen ist durch den Empfänger zu quittieren (Unterschrift).
+
+\section{Prüfung der Bankkonten}
+Es werden folgende Bankkonten geführt:
+\begin{longtable}[ht]{|p{0.13\textwidth} p{0.20\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.23\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\footnotesize \textcolor{white}{\textbf{Geldinstitut}} &
+	\footnotesize\textcolor{white}{\textbf{IBAN}} & 
+	\footnotesize \textcolor{white}{\textbf{BIC}} &
+	\footnotesize \textcolor{white}{\textbf{Bezeichnung}} & 
+	\footnotesize \textcolor{white}{\textbf{Zeichnungsberechtigt}} \\ \endhead
+	\scriptsize Skatbank & 
+	\scriptsize DE88830654080004756894 & 
+	\scriptsize GENODEF1SLR  &
+	\scriptsize Girokonto &
+	\scriptsize Hans-Peter Delius\newline Frank Behr \\
+\hline
+\end{longtable}
+Auf Befragen wurde versichert, dass keine weiteren Bankkonten geführt werden.
+
+Für Hans-Peter Delius wurde die Freischaltung eines mobilen TAN-Verfahrens durchgeführt und ein täglicher Verfügungsrahmen von unbekannter Höhe für Online-Überweisungen eingeräumt. Es wird ein zeitnaher Wechsel des TAN-Verfahrens empfohlen, zur Erhöhung der Sicherheit und zum vermeiden von unnötig Kosten.
+
+Das Vier-Augen-Prinzip (zwei Personen müssen die sachliche und rechnerische Richtigkeit bestätigen) wird bis her nicht gefordert.
+
+Es wird empfohlen, in Zukunft bis zur Höhe des Netto-Zahlbetrages für geringwertige Wirtschaftsgüter das vereinfachte Feststellungsverfahren (nur die Unterschrift des Kassenwarts erforderlich) zuzulassen. Darüber hinausgehende Einzahlungs- oder Auszahlungsbelege sollten nur nach dem Vier-Augen-Prinzip erfolgen.
+
+\Achtung{Bei dieser Vereinbarung ist die Gefahr einer dolosen Handlung gegeben!}
+
+\textbf{Prüfung zum Prüfungsstichtag}\newline
+Der notwendige Abgleich zwischen den Daten der Finanzbuchhaltung und den anhand der Bankkontenauszüge nachgewiesenen Bankkontenbeständen konnte nicht durchgeführt werden, da kein Zugriff auf die aktuelle Buchhaltung bestand
+%Der Abgleich erfolgt zwischen den Daten der Finanzbuchhaltung und den anhand der Bankkontenauszüge nachgewiesenen Bankkontenbeständen.
+
+\begin{longtable}[ht]{|p{0.109\textwidth} p{0.20\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.156\textwidth} p{0.08\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\scriptsize \textcolor{white}{\textbf{Geldinstitut}} &
+	\scriptsize \textcolor{white}{\textbf{IBAN}} & 
+	\scriptsize \textcolor{white}{\textbf{Datum des letzten Kontoauszuges}} &
+	\scriptsize \textcolor{white}{\textbf{Ist-Bestand}\newline (Kontoauszug)} & 
+	\scriptsize \textcolor{white}{\textbf{Soll-Bestand}\newline (Finanzbuchhaltung)} &
+	\scriptsize \textcolor{white}{\textbf{Differenz}} \\ \endhead
+	\scriptsize Skatbank & 
+	\scriptsize DE88830654080004756894& 
+	\scriptsize 04.10.13  &
+	\scriptsize \EUR{3546,25} &
+	\scriptsize \textbf{KEIN ZUGRIFF,\newline NICHT PRÜFBAR!} & 
+	\scriptsize \\
+\hline
+\end{longtable}
+\underline{\textbf{Prüfergebnis:}}\newline
+Die Kontoauszüge der Geldinstitute sind für den gesamten Prüfungszeitraum \underline{lückenlos}.
+%Die Kontoauszüge der Geldinstitute sind für den gesamten Prüfungszeitraum \underline{nicht lückenlos}.
+%Der Jahresanfangs- und der Jahresendbestand der geprüften Geldinstitute stimmen mit dem Kontenbestand der Finanzbuchhaltung zum jeweiligen Stichtag \underline{überein}.
+%Der Jahresanfangs- und der Jahresendbestand der geprüften Geldinstitute stimmen mit dem Kontenbestand der Finanzbuchhaltung zum jeweiligen Stichtag \underline{nicht überein}.
+Ob der Jahresanfangs- und der Jahresendbestand der geprüften Geldinstitute mit dem Kontenbestand der Finanzbuchhaltung zum jeweiligen Stichtag übereinstimmt. Konnte nicht geprüft werden, da kein Zugriff auf die aktuellen Finanzbuchhaltungsdaten möglich war.
+
+\textbf{\underline{Anmerkungen:}}\newline
+Ohne einen entsprechenden lesenden Zugriff auf die Finanzbuchhaltungsdaten oder ersatzweise die kompletten Kontenbücher ist die Prüfung unvollständig. Festgestellt werden konnte jedoch, dass der Endbestand des Bankkontos und der Barkasse zum 07.09.2013 dem Buchbestand entsprach.
+
+Eine zusätzlich individuell in Form einer Excel-Tabelle geführte Kontenübersicht ist nicht ausreichend. Für die nächste Prüfung müssen die entsprechenden Kontenunterlagen vom LSM bereitgestellt werden. Es wird Empfohlen die Excel-Tabelle durch ein geeignetes Buchhaltungsprogramm zu ersetzen. 
 \end{document}
