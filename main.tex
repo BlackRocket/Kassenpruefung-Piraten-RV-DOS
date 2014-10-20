@@ -1,10 +1,9 @@
 \documentclass[%
 	titlepage,oneside,12pt,headlines=1.5,numbers=noenddot, chapterprefix=false,parskip=full-,DIV=14,pagesize]{scrreprt}
 \input{preambelcommands.tex} % Quelle http://brcs.eu/d0fio
-\usepackage[utf8]{inputenc} % Schriftsatz utf8 verwenden
+\usepackage[utf8]{luainputenc} % Schriftsatz utf8 verwenden
 \usepackage[T1]{fontenc} % T1-Fonts
-\usepackage[latin,english,ngerman]{babel} % Deutsche Sonderzeichen und Silbentrennung 
-\usepackage{courier}
+\usepackage[latin,english,main=ngerman]{babel} % Deutsche Sonderzeichen und Silbentrennung 
 \usepackage[sc]{mathpazo}
 \renewcommand\sfdefault{ppl}
 \usepackage[scaled]{helvet} % ss
@@ -14,7 +13,7 @@
 \usepackage{eurosym}
 \usepackage{amssymb} % Mathematische Symbole 
 \usepackage{pifont} % einige Befehle brauchen pifont (Symbole)
-\usepackage[babel,german=quotes]{csquotes}
+\usepackage[babel,german=guillemets]{csquotes}
 
 \usepackage{tabularx} % bessere Tabellen
 \usepackage[para]{threeparttable} %Fussnoten innerhalb von Tabellen
@@ -70,7 +69,7 @@
 	\renewcommand\footrulewidth{0.5pt}
 	\lhead{Kassenprüfbericht\\ RV Dahme-Oder-Spree}
 	\chead{}
-	\rhead{\includegraphics[width=27mm]{logo}}
+	\rhead{\includegraphics[width=27mm]{DOS-Logo.png}}
 	\lfoot{Prüfung vom 16.10.2013}
 	\cfoot{}
 	\rfoot{\thepage\ / \pageref{LastPage}}
@@ -167,7 +166,7 @@
 		%Titelseite setzen
 		\begin{titlepage}
 			\begin{center}
-					\includegraphics[width=6cm]{logo}\\[4cm]
+					\includegraphics[width=6cm]{DOS-Logo.png}\\[4cm]
 				{\bfseries
 					\makeatletter
 						\Huge Kassenprüfbericht
@@ -588,8 +587,9 @@ Wegen der unzureichenden Buchhaltungsunterlagen wird empfohlen, möglichst zeitn
 In Bezug auf die offenen Beitragsforderungen wird empfohlen, den direkten Kontakt mit den Mitgliedern zu
 suchen und zu versuchen, sie zur Begleichung ihrer Beitragsschuld zu bewegen. Ob Mahnverfahren durchgeführt werden sollten, an deren Ende die Auflösung der Mitgliedschaft stehen kann, sollte der Vorstand in Absprache mit dem Landes- / Bundesverband entscheiden.
 
-Aus Sicht der Kassenprüfung ist der Kassenwart des Regionalverbandes Dahme-Oder-Spree seinen Aufgaben im geprüften
-Zeitraum nicht nachgekommen.
+Aus Sicht der Kassenprüfung ist der Kassenwart des Regionalverbandes Dahme-Oder-Spree seinen Aufgaben im geprüften Zeitraum nicht nachgekommen.
 
 Die Kassenprüfer sind weiterhin der Auffassung das die Hauptversammlung den Kassenwart Hans-Peter Delius hätte nicht entlasten dürfen.
+
+\textbf{Eine Übernahme der Prüfergebnisse durch andere Prüfinstanzen ist nicht zulässig.}
 \end{document}
