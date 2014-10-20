@@ -1,0 +1,595 @@
+\documentclass[%
+	titlepage,oneside,12pt,headlines=1.5,numbers=noenddot, chapterprefix=false,parskip=full-,DIV=14,pagesize]{scrreprt}
+\input{preambelcommands.tex} % Quelle http://brcs.eu/d0fio
+\usepackage[utf8]{luainputenc} % Schriftsatz utf8 verwenden
+\usepackage[T1]{fontenc} % T1-Fonts
+\usepackage[latin,english,main=ngerman]{babel} % Deutsche Sonderzeichen und Silbentrennung 
+\usepackage[sc]{mathpazo}
+\renewcommand\sfdefault{ppl}
+\usepackage[scaled]{helvet} % ss
+\usepackage{marvosym} % diverse Symbole
+\usepackage{wasysym} % diverse Symbole 
+\usepackage{eulervm} % Mathematische Symbole 
+\usepackage{eurosym}
+\usepackage{amssymb} % Mathematische Symbole 
+\usepackage{pifont} % einige Befehle brauchen pifont (Symbole)
+\usepackage[babel,german=guillemets]{csquotes}
+
+\usepackage{tabularx} % bessere Tabellen
+\usepackage[para]{threeparttable} %Fussnoten innerhalb von Tabellen
+\usepackage{array} % wird von colortbl benötigt
+\usepackage{colortbl} % erlaubt Farbige Zellen
+\usepackage{soul}
+\usepackage[table]{xcolor} % alternierende farbige Tabellenzeilen
+\usepackage{booktabs} % Gestaltung der horizontalen Linien innerhalb einer Tabelle
+\usepackage{multirow}
+\usepackage{longtable}
+
+\usepackage{xspace} 
+\usepackage{geometry} 
+\usepackage{setspace}
+\usepackage{calc} 
+\usepackage{microtype} 
+\usepackage{setspace}
+\usepackage{marginnote} % für Randnotizen
+
+% andere Pakete
+\usepackage{graphicx} % Grafikpaket
+\usepackage{tikz} % für hervor gehobene Boxen
+\usetikzlibrary{calc,arrows,shadings,shadows}
+\newcommand\Loadedframemethod{tikz}
+\usepackage[framemethod=\Loadedframemethod]{mdframed}
+
+\geometry{a4paper,left=20mm,right=20mm,top=10mm,bottom=10mm,includeheadfoot,footskip=18pt}
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
+
+\usepackage{titlesec} % ermöglicht das anpassen der Titel
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\usepackage{enumitem} %Anpassbare Enumerates/Itemizes
+\setlist{noitemsep}
+
+\definecolor{dunkelgrau}{gray}{0.35}
+\definecolor{mittelgrau}{gray}{0.85}
+\definecolor{hellgrau}{gray}{0.93}
+\definecolor{pirateorange}{rgb}{1.0,0.52,0.0}
+\definecolor{pirateorangebright}{rgb}{1.0,0.62,0.0}
+\definecolor{pirateorangebrighter}{rgb}{1.0,0.73,0.0}
+\definecolor{dunkelblau}{rgb}{0.03,0.09,0.44}
+\definecolor{mittelblau}{rgb}{0.29,0.38,0.84}
+\definecolor{hellblau}{rgb}{0.44,0.5,0.84}
+
+\makeatletter
+\fancypagestyle{plain} {
+	\renewcommand\headrulewidth{0.5pt}
+	\renewcommand\footrulewidth{0.5pt}
+	\lhead{Kassenprüfbericht\\ RV Dahme-Oder-Spree}
+	\chead{}
+	\rhead{\includegraphics[width=27mm]{DOS-Logo.png}}
+	\lfoot{Prüfung vom 16.10.2013}
+	\cfoot{}
+	\rfoot{\thepage\ / \pageref{LastPage}}
+	}
+\makeatother
+
+%\input{tabelle.tex}
+
+% Hyperlinks und interne PDF-Verweise
+\usepackage[
+       % Farben fuer die Links
+       colorlinks=true,         % Links erhalten Farben statt Kaeten
+       urlcolor=dunkelblau,    % \href{...}{...} external (URL)
+       filecolor=black,  % \href{...} local file
+       linkcolor=black,  % \ref{...} and \pageref{...}
+       citecolor=black,
+       menucolor=black,
+       % Links
+       raiselinks=true,			% calculate real height of the link
+       backref=false,           % Backlinks im Literaturverzeichnis (section, slide, page, none)
+       pagebackref=false,       % Backlinks im Literaturverzeichnis mit Seitenangabe
+       verbose,
+       hyperindex=true,         % backlinkex index
+       linktocpage=true,        % Inhaltsverzeichnis verlinkt Seiten
+       hyperfootnotes=true,     % Keine Links auf Fussnoten
+       % Bookmarks
+       bookmarks=false,         % Erzeugung von Bookmarks
+       % Anchors
+       plainpages=false,        % Anchors even on plain pages ?
+       pageanchor=true,         % Pages are linkable
+       pdfstartview=FitH,       % Dokument wird Fit Width geaefnet
+       pdfpagemode=UseOutlines, % Bookmarks im Viewer anzeigen
+       pdfpagelabels=true,      % set PDF page labels
+]{hyperref}
+
+% PDF Informationen
+%\makeatletter
+%\AtBeginDocument{
+%  \hypersetup{
+%    pdftitle={},
+%    pdfauthor={},
+%    pdfsubject={,
+%    pdfkeywords={}
+%  }
+%}
+%\makeatother
+
+% Endnotes
+\usepackage{endnotes}
+\let\footnote=\endnote
+\def\enotesize{\normalsize}
+\renewcommand{\notesname}{Notes} 
+\makeatletter
+	\def\@makeentext#1{\theenmark) #1}
+\makeatother
+
+\newcommand{\notes}{
+  \begingroup
+  \parindent 0pt
+  \leftmargin 2.5cm
+  \parskip -1ex
+  \def\enotesize{\normalsize}
+  \theendnotes
+  \endgroup
+}
+\usepackage{hyperendnotes} 
+
+% für lange Zitate
+\newenvironment{bquote}% 
+   {\begin{quotation}\small}% 
+   {\end{quotation}}% 
+\SetBlockEnvironment{bquote}
+
+% für kurze Zitate
+\newenvironment{squote}% 
+   {\begin{quote}\small}% 
+   {\end{quote}}% 
+\SetBlockEnvironment{squote}
+
+% Hinweis und Warnung
+\newcommand*{\Hinweis}[1]{\textbf{Hinweis:} #1}
+\newcommand*{\Warnung}[1]{\textbf{Warnung:} #1}
+\newcommand*{\Achtung}[1]{\textbf{Achtung:} #1}
+
+\makeatletter
+	\newcommand*\@lizenz{
+		\includegraphics[scale=2.5]{./pd.eps}
+	}
+\makeatother
+
+\makeatletter
+\renewcommand\maketitle{
+	\begingroup
+		%Titelseite setzen
+		\begin{titlepage}
+			\begin{center}
+					\includegraphics[width=6cm]{DOS-Logo.png}\\[4cm]
+				{\bfseries
+					\makeatletter
+						\Huge Kassenprüfbericht
+					\makeatother
+				}\\[5mm]
+				\makeatletter
+					{\Large des}\\[5mm]
+					{\Large RV Dahme-Oder-Spree}\\[50mm]
+					\textit{\Large Legislaturperiode 2012/2013 }
+				\makeatother
+					
+			\end{center}
+    		\vspace*{\fill} 
+    		\begin{minipage}[b]{8cm}
+    		\begin{flushleft}
+    			\makeatletter
+    				\@lizenz
+    			\makeatother
+    		\end{flushleft}
+    	\end{minipage}
+    		\hfill
+    		\begin{minipage}[b]{8cm} 
+    			\begin{flushright}
+    				\textbf{Autoren:}\\[2mm]
+    				Sebastian Bretag\\
+    				Steffen Kern
+    			\end{flushright}
+    		\end{minipage}
+    	\end{titlepage}
+	\endgroup
+	\pagebreak
+	\pagestyle{plain}
+	\onehalfspacing 
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+	\tableofcontents
+	\pagebreak
+}
+\makeatother
+
+\renewcommand*{\chapterpagestyle}{plain}
+\renewcommand*{\indexpagestyle}{plain}
+\setcounter{secnumdepth}{6} % Numeriere 6 Ebenen tief (bis subparagraph)
+
+% Abstand vor und nach Kapitelüberschriften
+% \chapter
+\titleformat{\chapter}[hang]{\fontsize{19}{19}\selectfont\bfseries}{\thechapter}{.5em}{}
+\titlespacing{\chapter}{0pt}{-2em}{-0.5em}
+
+% \section
+\titleformat{\section}[hang]{\fontsize{17}{17}\selectfont\bfseries}{\thesection}{.5em}{}
+\titlespacing{\section}{0pt}{0em}{-.5em}
+
+% \subsection
+\titleformat{\subsection}[hang]{\fontsize{16}{16}\selectfont\bfseries}{\thesubsection}{.5em}{}
+\titlespacing{\subsection}{0pt}{0em}{-1em}
+
+% \subsubsection
+\titleformat{\subsubsection}[hang]{\fontsize{14}{14}\selectfont\bfseries}{\thesubsubsection}{.5em}{}
+\titlespacing{\subsubsection}{0em}{0pt}{-1em}
+
+% \paragraph
+%\titleformat{\paragraph}[hang]{\fontsize{14}{14}\selectfont\bfseries}{\theparagraph}{.5em}{}
+%\titlespacing{\paragraph}{0pt}{0em}{-1em}
+
+% \subparagraph
+%\titleformat{\subparagraph}[hang]{\normalsize\bfseries}{\thesubparagraph}{.5em}{}
+%\titlespacing{\subparagraph}{0pt}{0em}{-1em}
+
+
+\renewcommand{\arraystretch}{1.2}% erhöht den Zeilenabstand für Ueberschrift
+\setlength{\arrayrulewidth}{1.5pt}%
+\rowcolors{1}{hellgrau}{white}% alternierende Farben
+\arrayrulecolor{pirateorange}%
+
+\newcommand*{\ditto}{\begin{center}\vspace{-0.40in}---\quad \textquotedbl\quad ---\vspace{-0.24in}\end{center}}
+\begin{document} 
+\maketitle
+
+\chapter{Prüfungsrahmen}
+\section{geprüfter Zeitraum}
+Es wurden die Unterlagen für die Zeit vom 01.01.2013 bis 07.09.2013 geprüft.
+
+\textit{Die Prüfergebnisse für den Zeitraum 11.08.2012 bis 31.12.2013 wurden auf der Hauptversammlung 2013 des RV DOS am 07.09.2013 vorgestellt. Eine Prüfung der gesamten Legislaturperiode vor Hauptversammlung war nicht möglich, da kommissarischer Kassenwart nicht zur Verfügung stand.}
+\section{beteiligte Personen}
+Die Prüfung wurde am 16.10.2013 durch
+\renewcommand{\arraystretch}{1.2}% erhöht den Zeilenabstand für Ueberschrift
+\setlength{\arrayrulewidth}{1.5pt}%
+\rowcolors{1}{hellgrau}{white}% alternierende Farben
+\arrayrulecolor{pirateorange}%
+\begin{longtable}[ht]{|p{0.25\textwidth} p{0.694\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\textcolor{white}{\textbf{Name}} & \textcolor{white}{\textbf{Funktion}}  \\
+        Sebastian Bretag & Kassenprüfer RV DOS \\ 
+        Steffen Kern  & Kassenprüfer RV DOS  \\
+\hline
+\end{longtable}\vspace{-1.25em}
+durchgeführt.
+
+Für Auskünfte stand zur Verfügung
+\renewcommand{\arraystretch}{1.2}% erhöht den Zeilenabstand für Ueberschrift
+\setlength{\arrayrulewidth}{1.5pt}%
+\rowcolors{1}{hellgrau}{white}% alternierende Farben
+\arrayrulecolor{pirateorange}%
+\begin{longtable}[ht]{|p{0.25\textwidth} p{0.694\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\textcolor{white}{\textbf{Name}} & \textcolor{white}{\textbf{Funktion}}  \\
+        Hans-Peter Delius & Beisitzer \& Kommissarischer Kassenwart  \\ 
+        Frank Behr & 1. Vorsitzender \\\hline
+\end{longtable}\vspace{-1.25em}
+
+
+Während der Kassenprüfung waren noch nachfolgende Personen anwesend
+\renewcommand{\arraystretch}{1.2}% erhöht den Zeilenabstand für Ueberschrift
+\setlength{\arrayrulewidth}{1.5pt}%
+\rowcolors{1}{hellgrau}{white}% alternierende Farben
+\arrayrulecolor{pirateorange}%
+\begin{longtable}[ht]{|p{0.25\textwidth} p{0.69\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\textcolor{white}{\textbf{Name}} & \textcolor{white}{\textbf{Funktion}}  \\
+        Kai Hamacher & 1. Vorsitzender (Legislaturperiode 2013/2014) \\ 
+        Guido Körber & 2. Vorsitzender (Legislaturperiode 2013/2014) \\
+        Angelika Meier & Beisitzer (Legislaturperiode 2013/2014) \\
+        Frank Giebel-Schink & Beisitzer (Legislaturperiode 2013/2014) \\
+        Klaus Peter & Beisitzer (Legislaturperiode 2013/2014) \\
+\hline
+\end{longtable}\vspace{-1.25em}
+
+
+\chapter{Prüfungsunterlagen}
+Folgende Unterlagen liegen vollständig vor:
+
+\begin{longtable}[ht]{|p{0.25\textwidth} p{0.10\textwidth} p{0.568\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\textcolor{white}{\textbf{Prüfung}} & \textcolor{white}{\textbf{Ja/Nein}} & \textcolor{white}{\textbf{Kommentar}}\\\endhead
+        \footnotesize Bilanz/Jahresrechnung & \footnotesize \textit{nein} & \footnotesize  \\ 
+        \footnotesize Summen und Saldenliste & \footnotesize \textit{nein} & \scriptsize Ein Zugriff auf die Buchhaltung bestand nicht. Gebucht wird ausschließlich durch den Schatzmeister oder eine beauftragte Person im Landesverband. Infolge der Umstellung der Buchhaltung rückwirkend ab 2012 auf Sage, der Neuwahl des LSM und organisatorische Probleme konnten auch die Unterlagen nicht vollständig zur Verfügung gestellt werden. Vorgelegt werden konnten der Kontennachweis für den geprüften Zeitraum für den RV. \\
+        \footnotesize Buchhaltungsdaten in Dateiform (z.B. als csv-Datei) & \footnotesize \textit{nein} & \ditto  \\
+        \footnotesize Kontenblätter & \footnotesize \textit{nein} &  \ditto \\
+        \footnotesize Journal & \footnotesize \textit{nein} & \ditto \\
+        \footnotesize Kontenplan & \footnotesize \textit{nein} & \footnotesize  \\
+        \footnotesize Buchungsbelege\newline Nr. xxxx bis xxxx & \footnotesize \textit{ja} & \footnotesize Die Buchungsbelege waren nicht sortiert. \\
+        \footnotesize Bankkontenauszüge & \footnotesize \textit{ja} & \footnotesize Deutsche Skatbank, Kontonummer: 4756894\newline vom 01.01.2013 bis 31.08.2013 \\
+        \footnotesize Barkassenbuch & \footnotesize \textit{nein} & \footnotesize Ein solches Buch wird nicht geführt, es existiert ausschließlich eine Wikiseite (http://brcs.eu/9unkx). \\
+        \footnotesize Prüfungsfeststellungen und empfohlene Maßnahmen aus der vorherigen Kassenprüfung liegen vor und werden zur Nachkontrolle herangezogen. & \footnotesize \textit{nein} & \footnotesize In den vorhergehenden Legislaturperioden wurde nur eine Stichprobenartige Barkassenprüfung durchgeführt.\\
+        \footnotesize Die Belege sind mit Belegnummern versehen und nach einem nachvollziehbaren Ordnungsprinzip abgelegt. & \footnotesize \textit{nein} & \footnotesize Die Belege sind nicht fortlaufend nummeriert. \\
+\hline
+\end{longtable}
+
+% Für die Prüfung stand ein ausschließlich lesender Zugriff auf die Buchhaltungs- und Mitgliederdaten zur Verfügung.
+Für die Prüfung stand \underline{\textbf{kein}} ausschließlich lesender Zugriff auf die Buchhaltungs- und Mitgliederdaten zur Verfügung.
+
+
+\chapter{Prüfungshandlungen}
+\section{Barkasse}
+% Es wird keine Barkasse geführt.\newline
+Es wird eine Barkasse geführt. \textbf{Hans-Peter Delius} war verantwortlich für die Führung der Barkasse im Prüfungszeitraum. Auf Befragen wurde versichert, dass keine weiteren Geld- oder sonstigen Vermögensbestände verwahrt werden.
+
+\begin{longtable}[ht]{|p{0.40\textwidth} p{0.10\textwidth} p{0.419\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\textcolor{white}{\textbf{Prüfung}} & \textcolor{white}{\textbf{Betrag}} & \textcolor{white}{\textbf{Kommentar}}\\\endhead
+        \footnotesize Soll-Bestand laut Finanzbuchhaltung & \footnotesize -- & \footnotesize Kein Zugriff möglich \\ 
+        \footnotesize Soll-Bestand laut Kassenbuch & \footnotesize \EUR{0,00} & \footnotesize Nicht dokumentenechte Wikiseite \\
+        \footnotesize Ist-Bestand der Barkasse & \footnotesize \EUR{0,00} &   \\
+        \footnotesize \textbf{Differenz zum Soll-Bestand Kassenbuch} & \footnotesize \textbf{\EUR{0,00}} &  \\
+\hline
+\end{longtable}
+\subsection{Prüfergebnis}
+Der Barkassenbestand am Prüfungsstichtag stimmt mit dem Kassenbuch \underline{überein}.
+%Der Barkassenbestand am Prüfungsstichtag stimmt mit dem Kassenbuch \underline{nicht überein}.
+
+%Der Barkassenbestand am Prüfungsstichtag stimmt mit dem Kontenbestand der Finanzbuchhaltung \underline{überein}.
+%Der Barkassenbestand am Prüfungsstichtag stimmt mit dem Kontenbestand der Finanzbuchhaltung \underline{nicht überein}.
+
+%Der Barkassenbestand laut Kassenbuch stimmt am Prüfungsstichtag mit dem Kontenbestand der Finanzbuchhaltung \textbf{\underline{überein}}.
+%Der Barkassenbestand laut Kassenbuch stimmt am Prüfungsstichtag mit dem Kontenbestand der Finanzbuchhaltung \textbf{\underline{nicht überein}}.
+Ob der Barkassenbestand und der Barkassenbestand laut Kassenbuch mit dem Kontenbestand der Finanzbuchhaltung übereinstimmt konnte nicht geprüft werden. Da kein Zugriff auf die aktuellen Finanzbuchhaltungsdaten möglich war.
+
+%\underline{\textbf{Bei fehlender Übereinstimmung:}}\newline
+%Folgende Beleg wurden bisher nicht im Kassenbuch erfasst / nicht in der Finanzbuchhaltung gebucht.
+
+%\begin{longtable}[ht]{|p{0.15\textwidth} p{0.16\textwidth} p{0.15\textwidth} p{0.434\textwidth}|}
+%\hline\rowcolor{pirateorange} 
+%	\textcolor{white}{\textbf{Belegdatum}} & \textcolor{white}{\textbf{Belegnummer}} & \textcolor{white}{\textbf{Betrag}} & 
+%	\textcolor{white}{\textbf{Anm.: nicht erfasst / nicht gebucht}}\\\endhead
+%        \footnotesize  & \footnotesize  & \footnotesize & \footnotesize \\ 
+%        \footnotesize  & \footnotesize  & \footnotesize & \footnotesize \\
+%\hline
+%\end{longtable}
+
+%Unter Berücksichtigung dieser Belege kann eine Übereinstimmung des Ist-Bestandes mit den Soll-Beständen im Kassenbuch \underline{festgestellt} werden.
+%Unter Berücksichtigung dieser Belege kann eine Übereinstimmung des Ist-Bestandes mit den Soll-Beständen im Kassenbuch \underline{nicht festgestellt} werden. In der Barkasse befindet sich \EUR{X} zu viel. 
+%Unter Berücksichtigung dieser Belege kann eine Übereinstimmung des Ist-Bestandes mit den Soll-Beständen im Kassenbuch \underline{nicht festgestellt} werden. In der Barkasse befindet sich \EUR{X} zu wenig. 
+
+%Folgende Gründe für die nicht Übereinstimmung wurden von der kassenverantwortlichen Person genannt.
+
+\subsection{Anmerkungen}
+Die Barkasse wurde faktisch aufgelöst. \textit{Empfohlen wird trotzdem die Anschaffung und Führung von eines dokumentenechten Kassenbuches. Auch empfohlen wird die Anschaffung von Quittungsbüchern als Quittungsbeleg für Bareinzahlungen bzw. Barauszahlungen bei Rückerstattung verauslagter Kosten. Einzahlungen sind durch den Kassenführer (Unterschrift), der Empfang von Auszahlungen ist durch den Empfänger zu quittieren (Unterschrift).}
+
+\section{Prüfung der Bankkonten}
+Es werden folgende Bankkonten geführt:
+\begin{longtable}[ht]{|p{0.13\textwidth} p{0.20\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.23\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\footnotesize \textcolor{white}{\textbf{Geldinstitut}} &
+	\footnotesize\textcolor{white}{\textbf{IBAN}} & 
+	\footnotesize \textcolor{white}{\textbf{BIC}} &
+	\footnotesize \textcolor{white}{\textbf{Bezeichnung}} & 
+	\footnotesize \textcolor{white}{\textbf{Zeichnungsberechtigt}} \\ \endhead
+	\scriptsize Skatbank & 
+	\scriptsize DE88830654080004756894 & 
+	\scriptsize GENODEF1SLR  &
+	\scriptsize Girokonto &
+	\scriptsize Hans-Peter Delius\newline Frank Behr \\
+\hline
+\end{longtable}
+Auf Befragen wurde versichert, dass keine weiteren Bankkonten geführt werden.
+
+Für Hans-Peter Delius wurde die Freischaltung eines mobilen TAN-Verfahrens durchgeführt und ein täglicher Verfügungsrahmen von unbekannter Höhe für Online-Überweisungen eingeräumt. Es wird ein zeitnaher Wechsel des TAN-Verfahrens empfohlen, zur Erhöhung der Sicherheit und zum vermeiden von unnötig Kosten.
+
+Das Vier-Augen-Prinzip (zwei Personen müssen die sachliche und rechnerische Richtigkeit bestätigen) wird bis her nicht gefordert.
+
+\textit{Es wird empfohlen, in Zukunft bis zur Höhe des Netto-Zahlbetrages für geringwertige Wirtschaftsgüter das vereinfachte Feststellungsverfahren (nur die Unterschrift des Kassenwarts erforderlich) zuzulassen. Darüber hinausgehende Einzahlungs- oder Auszahlungsbelege sollten nur nach dem Vier-Augen-Prinzip erfolgen.}
+
+\Achtung{Bei dieser Vereinbarung ist die Gefahr einer dolosen Handlung gegeben!}
+
+\textbf{Prüfung zum Prüfungsstichtag}\newline
+Der notwendige Abgleich zwischen den Daten der Finanzbuchhaltung und den anhand der Bankkontenauszüge nachgewiesenen Bankkontenbeständen konnte nicht durchgeführt werden, da kein Zugriff auf die aktuelle Buchhaltung bestand
+%Der Abgleich erfolgt zwischen den Daten der Finanzbuchhaltung und den anhand der Bankkontenauszüge nachgewiesenen Bankkontenbeständen.
+
+\begin{longtable}[ht]{|p{0.109\textwidth} p{0.20\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.156\textwidth} p{0.08\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\scriptsize \textcolor{white}{\textbf{Geldinstitut}} &
+	\scriptsize \textcolor{white}{\textbf{IBAN}} & 
+	\scriptsize \textcolor{white}{\textbf{Datum des letzten Kontoauszuges}} &
+	\scriptsize \textcolor{white}{\textbf{Ist-Bestand}\newline (Kontoauszug)} & 
+	\scriptsize \textcolor{white}{\textbf{Soll-Bestand}\newline (Finanzbuchhaltung)} &
+	\scriptsize \textcolor{white}{\textbf{Differenz}} \\ \endhead
+	\scriptsize Skatbank & 
+	\scriptsize DE88830654080004756894& 
+	\scriptsize 04.10.13  &
+	\scriptsize \EUR{3546,25} &
+	\scriptsize \textbf{KEIN ZUGRIFF,\newline NICHT PRÜFBAR!} & 
+	\scriptsize \\
+\hline
+\end{longtable}
+\subsection{Prüfergebnis}
+Die Kontoauszüge der Geldinstitute sind für den gesamten Prüfungszeitraum \underline{lückenlos}.
+%Die Kontoauszüge der Geldinstitute sind für den gesamten Prüfungszeitraum \underline{nicht lückenlos}.
+%Der Jahresanfangs- und der Jahresendbestand der geprüften Geldinstitute stimmen mit dem Kontenbestand der Finanzbuchhaltung zum jeweiligen Stichtag \underline{überein}.
+%Der Jahresanfangs- und der Jahresendbestand der geprüften Geldinstitute stimmen mit dem Kontenbestand der Finanzbuchhaltung zum jeweiligen Stichtag \underline{nicht überein}.
+Ob der Jahresanfangs- und der Jahresendbestand der geprüften Geldinstitute mit dem Kontenbestand der Finanzbuchhaltung zum jeweiligen Stichtag übereinstimmt. Konnte nicht geprüft werden, da kein Zugriff auf die aktuellen Finanzbuchhaltungsdaten möglich war.
+
+\subsection{Anmerkungen}
+Ohne einen entsprechenden lesenden Zugriff auf die Finanzbuchhaltungsdaten oder ersatzweise die kompletten Kontenbücher ist die Prüfung unvollständig. Festgestellt werden konnte jedoch, dass der Endbestand des Bankkontos und der Barkasse zum 07.09.2013 dem Buchbestand entsprach.
+
+Eine zusätzlich individuell in Form einer Excel-Tabelle geführte Kontenübersicht ist nicht ausreichend. Für die nächste Prüfung müssen die entsprechenden Kontenunterlagen vom LSM bereitgestellt werden. \textit{Es wird empfohlen die Excel-Tabelle durch ein geeignetes Buchhaltungsprogramm zu ersetzen.} 
+
+%\underline{\textbf{Bei fehlender Übereinstimmung:}}\newline
+%Folgende Belege wurden bisher nicht gebucht
+
+%\begin{longtable}[ht]{|p{0.15\textwidth} p{0.16\textwidth} p{0.15\textwidth} p{0.434\textwidth}|}
+%\hline\rowcolor{pirateorange} 
+%	\textcolor{white}{\textbf{Belegdatum}} & \textcolor{white}{\textbf{Belegnummer}} & \textcolor{white}{\textbf{Betrag}} & 
+%	\textcolor{white}{\textbf{Anmerkung}}\\\endhead
+%        \footnotesize  & \footnotesize  & \footnotesize & \footnotesize \\ 
+%        \footnotesize  & \footnotesize  & \footnotesize & \footnotesize \\
+%\hline
+%\end{longtable}
+
+%Unter Berücksichtigung dieser Belege kann eine Übereinstimmung des Ist-Bestandes der Geldinstitutskonten mit den Soll-Beständen in der Finanzbuchhaltung \underline{festgestellt} werden.
+%Unter Berücksichtigung dieser Belege kann eine Übereinstimmung des Ist-Bestandes der Geldinstitutskonten mit den Soll-Beständen in der Finanzbuchhaltung \underline{nicht festgestellt} werden.
+
+%Keine Prüfung möglich, da kein Zugriff auf die aktuellen Finanzbuchhaltungsdaten möglich war.
+
+%Folgende Gründe für die nicht Übereinstimmung wurden von der kassenverantwortlichen Person genannt.
+
+\section{Prüfung der Buchhaltung}
+%Belegnummern 31 bis 49 lückenlos 
+Im Rahmen der Prüfung wurden als Stichprobe die Buchungsbelege des Zeitraums\newline 01.01.2013 bis 07.09.2013 geprüft.
+
+\begin{longtable}[ht]{|p{0.25\textwidth} p{0.10\textwidth} p{0.568\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\footnotesize\textcolor{white}{\textbf{Prüfung}} & \footnotesize\textcolor{white}{\textbf{Ja/Nein}} & \footnotesize\textcolor{white}{\textbf{Kommentar}}\\\endhead
+        \scriptsize Hans-Peter Delius hat erklärt, dass alle Buchungsvorgänge erfasst und keine weiteren Geldbestände und Schwebeposten vorhanden sind. & \scriptsize \textit{} -- & \scriptsize Siehe Hinweis unter Pkt. 3.2. \\
+        \scriptsize Alle Buchungseintragungen sind mit Belegnummern versehen. & \scriptsize \textit{nein} & \scriptsize \\
+        \scriptsize Für alle Buchungen sind laut Stichprobenprüfung Belege vorhanden. & \scriptsize \textit{ja} & \scriptsize \\
+        \scriptsize Bei Bilanzierung: Die Ansätze der Posten der Gewinn- und Verlustrechnung und der Bilanz ergeben sich nachvollziehbar aus den Konten der Buchhaltung. & \scriptsize \textit{} -- & \scriptsize Entfällt \\
+        \scriptsize Es wird eine aktuelle Inventarliste geführt, aus der die Bestände jeweils zum Prüfungsstichtag ersichtlich sind. & \scriptsize \textit{ja} & \scriptsize Eine Inventarliste wird im \href{http://wiki.piratenbrandenburg.de/Dahme-Oder-Spree/Vorstand/Organisation}{Wiki} geführt \\
+        \scriptsize Alle Ausgaben (insbesondere die größeren Posten) wurden konform mit der Satzung getätigt. (Notwendige Beschlüsse liegen vor.) & \scriptsize \textit{ja} & \scriptsize Umlaufbeschlüsse \\
+        \scriptsize Die Grundsätze der ordnungsgemäßen Buchführung werden im Rahmen der Buchhaltung eingehalten. Insbesondere der Grundsatz der Klarheit und Übersichtlichkeit wurde beachtet. & \scriptsize \textit{} -- & \scriptsize Nicht prüfbar, da kein Zugriff auf die Finanzbuchhaltungen möglich. \\
+        \scriptsize Die Aufbewahrung der Buchhaltungsunterlagen erfolgt konform mit den gesetzlichen Fristen. & \scriptsize \textit{nein} & \scriptsize Original Buchhaltungsunterlagen wurden an den Landesschatzmeister übermittelt.\\
+\hline
+\end{longtable}
+\subsection{Anmerkungen}
+Das Vier-Augen-Prinzip wird weder bei Ein- noch bei Auszahlungen eingehalten.\newline
+\textit{Es wird Empfohlen für die Zukunft eine andere Lösung zu finden.}
+
+Die Aufbewahrung der Buchhaltungsunterlagen nicht erfolgt konform mit den gesetzlichen Fristen.\newline
+\textit{Es wird empfohlen die Buchhaltungsunterlagen wenigstens in Kopie beim Kassenwart zu belassen.}
+
+\section{Prüfung der Beitragseingänge}
+Nach dem Mitgliederverzeichnis waren zum Prüfungsstichtag 188 Personen Mitglied des RV Dahme-Oder-Spree. Der Mitgliedsbeitrag betrug zum Prüfungsstichtag \EUR{4} / Monat bzw. \EUR{48,00} / Kalenderjahr.
+
+Bis zum 16.10.2013 hatten 62 Mitglieder ihren Beitrag gezahlt. Den Beitragszahlungen steht ein Beitragsanspruch für 2013 i.H.v. \EUR{9.024,00} (Stand 16.10.2013) gegenüber. Aus 2013 besteht somit ein offener Beitragsanspruch in Höhe von \EUR{6.048,00} gegen die Mitglieder. 
+
+Die Summe der insgesamt ausstehenden Beitragszahlungen rückwirkend ab Gründung des Regionalverbandes könnte nicht ermittelt werden.
+
+\textit{Um Prüfung und entsprechende Veranlassung wird gebeten.}
+
+\subsection{Zuwendungsliste 2013 (Stand 16.10.2013)}
+Gemäß Aussage des Kassenwartes wurde eine solche vom Landesschatzmeister nicht zur Verfügung gestellt.
+
+\subsection{Einnahmen- und Ausgabenrechnung 2013 (Stand 16.10.2013)}
+Aufgrund der Art und Weise der durchgeführten Buchführung ist eine genaue Aufschlüsselung nicht möglich.
+
+\textit{\underline{Es wird dringend angeraten die aufgeführten Mängel sofort zu beheben.}}
+
+\subsection{Anmerkungen}
+Entgegen des Vorschlages der Kassenprüfer wurde der Kassenwart Hans-Peter Delius durch die Hauptversammlung entlastet. Für etwaige Fehler in der Buchführung haftet somit Hauptversammlung.
+
+\subsection{Weiterleitung des Beitragsanteils und der Spenden durch den Landesverband}
+Es wurde festgestellt, dass vom Landesverband für 2012 (Stand 16.10.2013) an den RV Dahme-Oder-Spree am 09.08.2013 ein Zahlung auf das Bankkonto in Höhe von \EUR{1.321,25} mit dem Überweisungstext „Umlage RV DOS 2012“ erfolgte. Unterlagen darüber, wie sich der Betrag zusammensetzt, liegen nicht vor.
+
+\textit{Die entsprechende Berechnungsunterlage sollte vom Landesschatzmeister angefordert werden.} \textit{Ob noch Ansprüche bestehen (aus den Vorjahren), sollte geprüft werden.}
+
+%\subsection{Offene Forderungen}
+%Welche Maßnahmen wurden ergriffen, um die Forderungen auszugleichen?
+%\begin{itemize}
+% \item Forderung an den Landesverband
+% \item Forderung an andere Gliederungen in Brandenburg
+% \item Forderung gegen Beitragsschuldner
+%\end{itemize}
+%Zum Beispiel Zahlungserinnerung durch
+%\begin{longtable}[ht]{|p{0.13\textwidth} p{0.10\textwidth} p{0.6895\textwidth}|}
+%\hline\rowcolor{pirateorange} 
+%	\textcolor{white}{\textbf{Maßnahme}} & \textcolor{white}{\textbf{Wie oft?}} & \textcolor{white}{\textbf{Ergebnis}}\\\endhead
+%        \footnotesize E-Mail & \footnotesize  & \footnotesize \\ 
+%        \footnotesize Brief & \footnotesize & \footnotesize  \\
+%        \footnotesize Telefon & \footnotesize &   \\
+%        \footnotesize Sonstiges & \footnotesize  &  \\
+%\hline
+%\end{longtable}
+% Forderungen gegen den Landesverband und andere Gliederungen in Brandenburg wurden nicht angemahnt.
+\pagebreak
+\section{Prüfung der Versicherungsverträge}
+\begin{longtable}[ht]{|p{0.25\textwidth} p{0.10\textwidth} p{0.568\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\textcolor{white}{\textbf{Prüfung}} & \textcolor{white}{\textbf{Ja/Nein}} & \textcolor{white}{\textbf{Kommentar}}\\\endhead
+        \footnotesize Haftpflichtversicherung;\newline Deckungssummen\newline Sachschäden:\newline Personenschäden: & \footnotesize --  & \footnotesize Über Bundespartei\\ 
+        \footnotesize Das Inventar ist versichert gegen: & \footnotesize & \footnotesize  \\
+        	\footnotesize \quad Feuer & \footnotesize \textit{nein} &   \\
+        	\footnotesize \quad Einbruchdiebstahl & \footnotesize \textit{nein}  &  \\
+        	\footnotesize \quad Leitungswasserschäden & \footnotesize \textit{nein}  &  \\
+        	\footnotesize \quad Elektronikschäden & \footnotesize \textit{nein}  &  \\
+        \footnotesize Der nachgewiesene Versicherungswert entspricht dem heutigen Neuwert. & \footnotesize \textit{nein}  &  \\
+\hline
+\end{longtable}
+
+\section{Prüfung des Inventars}
+\begin{longtable}[ht]{|p{0.25\textwidth} p{0.10\textwidth} p{0.568\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\footnotesize\textcolor{white}{\textbf{Prüfung}} & \footnotesize\textcolor{white}{\textbf{Ja/Nein}} & \footnotesize\textcolor{white}{\textbf{Kommentar}}\\\endhead
+        \scriptsize Ein Inventarverzeichnis liegt vor. & \scriptsize \textit{ja}  & \scriptsize Eine Inventarliste wird im \href{http://wiki.piratenbrandenburg.de/Dahme-Oder-Spree/Vorstand/Organisation}{Wiki} geführt.\\ 
+        \scriptsize Das Inventarverzeichnis enthält: & \scriptsize & \scriptsize  \\
+        	\scriptsize \leftskip=3mm Jahr der Anschaffung & \scriptsize \textit{nein} & \scriptsize  \\
+        	\scriptsize \leftskip=3mm Belegnummer & \scriptsize \textit{nein}  & \scriptsize \\
+        	\scriptsize \leftskip=3mm Kosten der Anschaffung & \scriptsize \textit{nein}  & \scriptsize \\
+        	\scriptsize \leftskip=3mm Beschreibung des inventarisierten Gegenstandes & \scriptsize \textit{nein} & \scriptsize \\
+        	\scriptsize \leftskip=3mm Ort, an dem sich der Gegenstand befindet & \scriptsize \textit{ja}  & \scriptsize \\
+\hline
+\end{longtable}
+%Die Identität der Inventarnummer laut Inventarverzeichnis mit der Inventarnummer am inventarisierten Gegenstand wurde stichprobenhaft geprüft und stimmt \underline{überein}.
+%Die Identität der Inventarnummer laut Inventarverzeichnis mit der Inventarnummer am inventarisierten Gegenstand wurde stichprobenhaft geprüft und stimmt \underline{nicht überein}.
+Die Identität der Inventarnummer laut Inventarverzeichnis mit der Inventarnummer am inventarisierten Gegenstand wurde stichprobenhaft nicht geprüft. Da das Inventar an unterschiedlichen Standorten im KV aufbewahrt wird.
+
+\subsection{Anmerkungen}
+\textit{Es wird empfohlen, die Inventarliste mit den fehlenden Angaben zu ergänzen und zu aktualisieren (Wahlplakate und Plakathalter sind nicht aufgeführt, veraltete Flyer etc. können entsorgt werden.)} Aktuell ist die Inventarliste im Wiki durch jeden bearbeitbar. \textit{Es wird deshalb auch empfohlen, die Bearbeitung nur durch Vorstandsmitglieder zuzulassen.}
+
+\chapter{Steuerrelevante Tatbestände}
+\section{Spenden}
+\begin{longtable}[ht]{|p{0.25\textwidth} p{0.10\textwidth} p{0.568\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\footnotesize\textcolor{white}{\textbf{Prüfung}} & \footnotesize\textcolor{white}{\textbf{Ja/Nein}} & \footnotesize\textcolor{white}{\textbf{Kommentar}}\\\endhead
+        \scriptsize Es wird ein Spendenbuch  geführt, in dem alle Spenden fortlaufend nummeriert aufgeführt sind. & \scriptsize \textit{}  & \scriptsize \\ 
+        \scriptsize Zu jeder Spende existiert eine Kopie der ausgestellten  Zuwendungsbestätigungen. & \scriptsize \textit{nein}	& \scriptsize \\
+        \scriptsize Auf der Zuwendungsbestätigung ist der Bezug zur Positionsnummer im Spendenbuch und/oder zum Buchungsbeleg in der Finanzbuchhaltung dokumentiert. & \scriptsize \textit{nein} & \scriptsize \\
+       	\scriptsize Die Zuwendungsbestätigungen orientieren sich an den Formularvorgaben des Bundesfinanzministeriums in der jeweils für den Prüfungszeitraum geltenden Version (www.bundesfinanzministerium.de) & \scriptsize \textit{ja} & \scriptsize \\
+       	\scriptsize Die Bewertung von Sachspenden  erfolgte unter Berücksichtigung der steuerrechtliehen Bewertungsvorschriften. Die Wertangabe des Spenders wurde eingehend  anhand von objektiven Unterlagen (z.B. Kaufbeleg) überprüft. Der Nachweis ist dem Doppel der Zuwendungsbestätigung beigefügt. & \scriptsize \textit{nein} & \scriptsize \\
+       	\scriptsize Einzelspenden  sind durch Überweisungsbelege, Lastschriftbelege oder Einzahlungsquittungen belegt. & \scriptsize \textit{nein} & \scriptsize Bitte in Zukunft alle Spenden quittieren und die Quittungen zu den Belegen nehmen.\\
+        \scriptsize Für zweckgebundene Spenden wurde der jeweilige Verwendungsnachweis (z.B. im Spendenbuch) dokumentiert. & \scriptsize \textit{nein}  	& \scriptsize \\
+\hline
+\end{longtable}
+
+\subsection{Anmerkungen}
+Es wird empfohlen, ein Spendenbuch zu anzulegen, das den oben genannten Anforderungen entspricht.
+
+\pagebreak
+\section{Sonstige Steuerthemen}
+\begin{longtable}[ht]{|p{0.25\textwidth} p{0.10\textwidth} p{0.568\textwidth}|}
+\hline\rowcolor{pirateorange} 
+	\footnotesize\textcolor{white}{\textbf{Prüfung}} & \footnotesize\textcolor{white}{\textbf{Ja/Nein}} & \footnotesize\textcolor{white}{\textbf{Kommentar}}\\\endhead
+        \scriptsize Der letzte Körperschaftssteuerfreistellungsbescheid wurde erteilt. Es bestehen demnach keine Beschränkungen bei der Ausstellung von Spendenbescheinigungen. & \scriptsize \textit{nein}  & \scriptsize \\ 
+        \scriptsize Die Partei führte im Prüfungszeitraum Aktivitäten durch, die mit steuerlich relevanten Einnahmen verbunden waren. & \scriptsize \textit{nein}	& \scriptsize \\
+        \scriptsize Die steuerliche Behandlung von Parteizeitschriften wurde geprüft. & \scriptsize -- & \scriptsize Entfällt \\
+       	\scriptsize Die steuerliche Behandlung von Sponsoring wurde geprüft. & \scriptsize -- & \scriptsize Entfällt \\
+       	\scriptsize Die Entstehung steuerlicher Verpflichtungen wurde unter Berücksichtigung bestehender Freigrenzen und Freibeträge geprüft. & \scriptsize -- & \scriptsize Entfällt \\
+       	\scriptsize Fällige Steuern wurden ordnungsgemäß abgeführt. & \scriptsize -- & \scriptsize Entfällt \\
+        \scriptsize Die Rücklagenbildung (einschließlich Kapitalstruktur) erfüllt die Anforderungen des § 58 Nr.6 und 7 AO. & \scriptsize -- & \scriptsize Entfällt \\
+        \scriptsize Die 40 Euro-Grenze bei Aufmerksamkeiten/Präsenten gegenüber Mitgliedern und Mitarbeitern wurde beachtet. & \scriptsize -- & \scriptsize Entfällt \\
+\hline
+\end{longtable}
+
+\chapter{Fazit und Empfehlungen}
+Auf die Anmerkungen im Bericht wird verwiesen. 
+
+Wegen der unzureichenden Buchhaltungsunterlagen wird empfohlen, möglichst zeitnah nach Jahresende eine erneute Kassenprüfung durchzuführen. Insbesondere sollten dazu die Abrechnungsunterlagen des Landesverbandes herangezogen werden, um zu prüfen, ob noch Ansprüche gegen den Landesverband aus zurückliegenden Jahren bestehen.
+
+In Bezug auf die offenen Beitragsforderungen wird empfohlen, den direkten Kontakt mit den Mitgliedern zu
+suchen und zu versuchen, sie zur Begleichung ihrer Beitragsschuld zu bewegen. Ob Mahnverfahren durchgeführt werden sollten, an deren Ende die Auflösung der Mitgliedschaft stehen kann, sollte der Vorstand in Absprache mit dem Landes- / Bundesverband entscheiden.
+
+Aus Sicht der Kassenprüfung ist der Kassenwart des Regionalverbandes Dahme-Oder-Spree seinen Aufgaben im geprüften Zeitraum nicht nachgekommen.
+
+Die Kassenprüfer sind weiterhin der Auffassung das die Hauptversammlung den Kassenwart Hans-Peter Delius hätte nicht entlasten dürfen.
+
+\textbf{Eine Übernahme der Prüfergebnisse durch andere Prüfinstanzen ist nicht zulässig.}
+\end{document}
